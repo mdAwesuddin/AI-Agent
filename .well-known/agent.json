@@ -1,0 +1,10 @@
+{
+    "id": "menu-price-agent",
+    "name": "Restaurant Menu Price Agent",
+    "description": "Responds to restaurant price inquiries",
+    "capabilities": ["tasks/send"],
+    "endpoints": {
+      "tasks/send": "http://localhost:3000/tasks/send"
+    }
+  }
+  

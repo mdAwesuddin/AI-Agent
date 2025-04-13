@@ -7,13 +7,15 @@ const router = express.Router();
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
+  baseURL: process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1',
 });
+
 
 async function extractQuery(prompt) {
   const systemPrompt = `Extract the restaurant name and item from this prompt. Return strictly this JSON: {"restaurant": "...", "item": "..."}`;
 
   const completion = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo',
+    model: 'mistralai/mistral-7b-instruct',
     messages: [
       { role: 'system', content: systemPrompt },
       { role: 'user', content: prompt },
